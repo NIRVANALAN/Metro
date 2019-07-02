@@ -1,4 +1,0 @@
-{
-    "python.pythonPath": "C:\\Users\\maver\\Miniconda3\\python.exe",
-    "python.linting.pylintArgs": ["--load-plugins", "pylint_django"]
-}
