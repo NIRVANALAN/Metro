@@ -10,11 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os, sys, datetime
+import os
+import sys
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#> App Directory
+# > App Directory
 sys.path.insert(0, os.path.join(BASE_DIR, 'App'))
 
 # Quick-start development settings - unsuitable for production
@@ -26,8 +28,31 @@ SECRET_KEY = 'wrkx6f@di!!(el%)f+l5jlaw=vj7&qf#qldqgjz_b9f=h+#l$k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+    'VIEW',
+)
+CORS_ALLOW_HEADERS = (
+    'XMLHttpRequest',
+    'X_FILENAME',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 
 # Application definition
 
@@ -48,9 +73,10 @@ INSTALLED_APPS = [
     'App.Operation',
     'App.Site',
     'App.Post',
+    'corsheaders'
 ]
 
-#> Auth Model
+# > Auth Model
 AUTH_USER_MODEL = 'User.User'
 
 MIDDLEWARE = [
@@ -93,11 +119,11 @@ DATABASES = {
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'init_command':'SET default_storage_engine=INNODB;',
+            'init_command': 'SET default_storage_engine=INNODB;',
         },
         'NAME': 'Metro',
-        'USER': 'root',
-        'PASSWORD': '199882',
+        'USER': 'test',
+        'PASSWORD': 'test',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -154,19 +180,19 @@ REST_FRAMEWORK = {
 
 # 在控制台输出详细信息
 LOGGING = {
-    'version':1,
-    'disable_existing_loggers':False,
-    'handlers':{
-        'console':{
-            'level':'DEBUG',
-            'class':'logging.StreamHandler',
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
         },
     },
-    'loggers':{
-        'django.db.backends':{
-            'handlers':['console'],
-            'propagate':True,
-            'level':'DEBUG'
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG'
         },
     }
 }
