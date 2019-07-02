@@ -1,3 +1,0 @@
-[submodule "Backend/vue-bmap-demo"]
-	path = Backend/vue-bmap-demo
-	url = git@github.com:newcoderlife/vue-bmap-demo.git
